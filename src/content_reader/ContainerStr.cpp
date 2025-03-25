@@ -1,6 +1,7 @@
 #include "content_reader/ContainerStr.hpp"
 
 void content_reader::ContainerStr::constructor_(){
+    content_size_= container_.size();
     begin_ = container_.begin();
     end_ = container_.end();
     is_end_ = begin_ == end_;
@@ -54,4 +55,8 @@ std::size_t content_reader::ContainerStr::find(
     char c, std::size_t p
 ){
     return container_.find(c, p);
+}
+
+std::size_t content_reader::ContainerStr::size(){
+    return content_size_;
 }

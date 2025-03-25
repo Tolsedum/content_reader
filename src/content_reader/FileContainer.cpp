@@ -129,3 +129,7 @@ std::size_t content_reader::FileContainer::find(
     }
     return pos_line;
 }
+
+std::size_t content_reader::FileContainer::size(){
+    return file_size_;
+}

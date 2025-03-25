@@ -62,6 +62,10 @@ std::size_t ContentReader::find(char c, std::size_t s ){
     return container_->find(c, s);
 }
 
+std::size_t ContentReader::size(){
+    return container_->size();
+}
+
 void ContentReader::print(){
     container_->print();
 }
