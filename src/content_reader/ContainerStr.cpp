@@ -10,12 +10,12 @@ void content_reader::ContainerStr::constructor_(){
 
 bool content_reader::ContainerStr::isEnd(){
     auto begin = begin_;
-    return is_end_ || ++begin == end_;
+    return content_size_ <= 0 || (is_end_ || (++begin == end_));
 };
 
 bool content_reader::ContainerStr::isNotEnd(){
     auto begin = begin_;
-    return !(is_end_ || ++begin == end_);
+    return content_size_ > 0 || !(is_end_ || (++begin == end_));
 };
 
 char content_reader::ContainerStr::current(){

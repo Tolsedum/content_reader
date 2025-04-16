@@ -1,20 +1,22 @@
 #include "content_reader/FileContainer.hpp"
 
 content_reader::FileContainer::FileContainer(std::string_view file_name){
-    file_p_.open(file_name.begin(), std::ios::binary);
-    next_read_ = false;
-    
-    file_size_ = std::filesystem::file_size(file_name);
-    
-    next();
+    if(std::filesystem::exists(file_name)){
+        file_size_ = std::filesystem::file_size(file_name);
+        file_p_.open(file_name.begin(), std::ios::binary);
+        next_read_ = false;
+        next();
+    }else{
+        file_size_ = 0;
+    }
 }
 
 bool content_reader::FileContainer::isEnd(){
-    return file_p_.is_open() && file_p_.eof();
+    return file_size_ <= 0 || (file_p_.is_open() && file_p_.eof());
 }
 
 bool content_reader::FileContainer::isNotEnd(){
-    return !(file_p_.is_open() && file_p_.eof());
+    return file_size_ > 0 || !(file_p_.is_open() && file_p_.eof());
 }
 
 char content_reader::FileContainer::current(){
