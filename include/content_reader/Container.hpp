@@ -1,6 +1,6 @@
 #ifndef CANTO_TMP_CONTAINER_HPP
 #define CANTO_TMP_CONTAINER_HPP
-
+// Version 1,0
 /**
  *  __________________________________________ 
  * |                                          |
@@ -42,12 +42,13 @@ namespace content_reader{
     class Container{
     public:
         virtual ~Container() = default;
+        virtual void clear() = 0;
+        virtual void setPos(int) = 0;
         virtual bool isEnd() = 0;
         virtual bool isNotEnd() = 0;
         virtual char current() = 0;
         virtual char next() = 0;
         virtual int pos() = 0;
-        virtual void setPos(int) = 0;
         virtual std::size_t find(std::string_view, std::size_t s = 0) = 0;
         virtual std::size_t find(char, std::size_t s = 0) = 0;
         virtual std::size_t size() = 0;

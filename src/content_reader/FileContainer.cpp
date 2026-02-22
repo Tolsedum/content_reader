@@ -11,6 +11,14 @@ content_reader::FileContainer::FileContainer(std::string_view file_name){
     }
 }
 
+void content_reader::FileContainer::clear(){
+    file_p_.close();
+    next_read_ = false;
+    current_ = 0;
+    next_ = 0;
+    file_size_ = 0;
+}
+
 bool content_reader::FileContainer::isEnd(){
     return file_size_ <= 0 || (file_p_.is_open() && file_p_.eof());
 }

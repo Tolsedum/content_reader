@@ -1,6 +1,6 @@
 #ifndef CONTAINER_FILE_HPP
 #define CONTAINER_FILE_HPP
-
+// Version 1,0
 /**
  *  __________________________________________ 
  * |                                          |
@@ -51,12 +51,14 @@ namespace content_reader{
         ~FileContainer(){
             file_p_.close();
         };
+        void clear();
+        void setPos(int) override;
         bool isEnd() override;
         bool isNotEnd() override;
         char current() override;
         char next() override;
         int pos() override;
-        void setPos(int) override;
+        
         std::size_t find(std::string_view str, std::size_t p = 0) override;
         std::size_t find(char c, std::size_t p = 0) override;
         std::size_t size() override;

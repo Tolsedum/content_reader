@@ -8,6 +8,12 @@ void content_reader::ContainerStr::constructor_(){
     pos_ = 0;
 }
 
+void content_reader::ContainerStr::clear(){
+    content_size_ = 0;
+    pos_ = 0;
+    is_end_ = true;
+}
+
 bool content_reader::ContainerStr::isEnd(){
     auto begin = begin_;
     return content_size_ <= 0 || (is_end_ || (++begin == end_));

@@ -28,6 +28,11 @@ void ContentReader::contentInit(
     }
 }
 
+void ContentReader::clear(){
+    container_->clear();
+    container_.reset();
+}
+
 bool ContentReader::isEnd(){
     return container_->isEnd();
 }

@@ -1,6 +1,6 @@
 #ifndef CONTENT_READER
 #define CONTENT_READER
-
+// Version 1,0
 /**
  *  __________________________________________ 
  * |                                          |
@@ -85,7 +85,7 @@ public:
      * For class constructor
      */
     void contentInit(ContentSettings&& contentSettings);
-
+    void clear();
     bool isEnd();
     bool isNotEnd();
     char current();

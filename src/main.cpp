@@ -3,6 +3,34 @@
 
 
 int main(){ // int argc, char *argv[]
+
+    std::string file_name{"public/view/html/index/index.html"};
+    std::string output{};
+
+    ContentSettings contentSettings;
+    
+    
+    std::ifstream file_p_(file_name);
+    std::string content{};
+    std::string tmp{};
+    while (std::getline(file_p_, tmp)){
+        content.append(tmp);
+    }
+    
+    // contentSettings.setFileName(file_name);
+    contentSettings.setContent(content);
+
+    if(std::filesystem::exists(file_name)){
+        std::cout << "is exists: " << std::endl;
+        ContentReader container_;
+        container_.contentInit(
+            std::forward<ContentSettings>(contentSettings)
+        );
+        container_.print();
+    }
+    return 0;
+    
+    
     ContentSettings setting;
 
     setting.setFileName("test.txt");
